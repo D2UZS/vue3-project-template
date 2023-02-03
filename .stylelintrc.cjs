@@ -1,0 +1,57 @@
+const propertyGroups = require("./.stylelint-order-preset.cjs");
+
+// TODO: stylelint-selector-bem-pattern
+
+module.exports = {
+  plugins: ["stylelint-order"],
+  extends: [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended-vue",
+    "stylelint-config-prettier",
+    "stylelint-config-prettier-scss",
+  ],
+  rules: {
+    "declaration-block-no-duplicate-custom-properties": true,
+    "declaration-empty-line-before": null,
+    "no-empty-source": null,
+    "selector-max-type": 0,
+    "selector-max-class": 1,
+    "alpha-value-notation": "number",
+    "selector-pseudo-class-disallowed-list": ["root"],
+    "number-max-precision": 2,
+    "declaration-no-important": true,
+    "property-disallowed-list": [
+      "flex",
+      "font",
+      "border",
+      "background",
+      "grid",
+      "grid-template",
+      "border-top",
+      "border-bottom",
+      "border-right",
+      "border-left",
+      "border-block",
+      "border-block-start",
+      "border-block-end",
+      "border-inline",
+      "border-inline-start",
+      "border-inline-end",
+      "font-variant",
+      "font-emphasize",
+      "text-emphasis",
+      "text-decoration",
+      "border-image",
+      "outline",
+      "transition",
+      "animation",
+    ],
+    "length-zero-no-unit": [true, { ignore: ["custom-properties"] }],
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-order": propertyGroups.map((group) => ({
+      ...group,
+      emptyLineBefore: "always",
+      noEmptyLineBetween: true,
+    })),
+  },
+};

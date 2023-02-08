@@ -1,0 +1,10 @@
+{
+  "stylelint.enable": true,
+  "stylelint.validate": ["vue", "scss", "sass", "css"],
+  "css.validate": false,
+  "scss.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  }
+}

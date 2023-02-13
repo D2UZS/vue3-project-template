@@ -4,6 +4,16 @@ const propertyGroups = require("./.stylelint-order-preset.cjs");
 
 module.exports = {
   plugins: ["stylelint-order"],
+  overrides: [
+    {
+      files: ["**/*.(scss|css|html|vue)"],
+      customSyntax: "postcss-scss",
+    },
+    {
+      files: ["**/*.(html|vue)"],
+      customSyntax: "postcss-html",
+    },
+  ],
   extends: [
     "stylelint-config-standard-scss",
     "stylelint-config-recommended-vue",
@@ -20,6 +30,12 @@ module.exports = {
     "selector-pseudo-class-disallowed-list": ["root"],
     "number-max-precision": 2,
     "declaration-no-important": true,
+    "block-no-empty": [
+      true,
+      {
+        severity: "warning",
+      },
+    ],
     "property-disallowed-list": [
       "flex",
       "font",

@@ -1,3 +1,113 @@
+/* stylelint-disable property-disallowed-list */
+/* stylelint-disable selector-max-type */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+
+  border-color: currentcolor;
+  border-style: solid;
+}
+
+html {
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 178%;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+[hidden] {
+  display: none;
+}
+
+[disabled] {
+  pointer-events: none;
+  cursor: default;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+::-webkit-file-upload-button {
+  appearance: button;
+
+  font: inherit;
+}
+
+[type="search"] {
+  appearance: textfield;
+
+  outline-offset: -2px;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  color: inherit;
+  font: inherit;
+
+  background-color: transparent;
+  background-image: none;
+  appearance: button;
+}
+
+a {
+  color: inherit;
+  text-decoration: unset;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+
+  outline: none;
+}
+
 .visually-hidden {
   position: absolute;
 

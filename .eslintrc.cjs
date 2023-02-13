@@ -1,18 +1,15 @@
 /* eslint-env node */
 require("@rushstack/eslint-patch/modern-module-resolution");
 
-// TODO: написать свое правило для обязательного lang="scss" атрибута
-// TODO: ПРОВЕРИТЬ И ВНЕДРИТЬ USE
-
 module.exports = {
   root: true,
   env: {
     node: true,
   },
   extends: [
+    "eslint:recommended",
     "plugin:vue/vue3-recommended",
     "plugin:vue-scoped-css/vue3-recommended",
-    "eslint:recommended",
     "@vue/eslint-config-typescript",
     "@vue/eslint-config-prettier",
   ],
@@ -21,13 +18,20 @@ module.exports = {
   },
   rules: {
     "no-var": "error",
+    "prefer-template": "warn",
+    "vue/prefer-template": "warn",
     "vue-scoped-css/no-unused-selector": "off",
-
+    "vue-scoped-css/enforce-style-type": ["error", { allows: ["scoped"] }],
+    "vue/component-tags-order": [
+      "error",
+      {
+        order: ["template", "script", "style"],
+      },
+    ],
     // Проверка на самозакрывающийся тег или компонент:
     // "always" — требовать самозакрытия элементов, у которых нет своего содержимого;
     // "never" — запретить самозакрытие;
     // "any" — не применять самозакрывающийся стиль.
-    // ! Автоматически не исправляет
     "vue/html-self-closing": [
       "error",
       {
@@ -40,46 +44,91 @@ module.exports = {
         math: "always", // ("always" по умолчанию) — стиль известных элементов MathML.
       },
     ],
-
-    // Проверка последовательного отступа в шаблоне <template>
-    "vue/html-indent": [
-      "error",
-      2, // type (number | "tab") — тип отступа. Значение по умолчанию 2. Если это число, то это количество пробелов для одного отступа. Если это "tab", он использует одну вкладку для одного отступа.
-      {
-        attribute: 1, // множитель отступа для атрибутов. Значение по умолчанию 1.
-        baseIndent: 1, // множитель отступа для операторов верхнего уровня. Значение по умолчанию 1.
-        closeBracket: 0, // множитель отступа для правых скобок. Значение по умолчанию 0.
-        alignAttributesVertically: true, // условие того, должны ли атрибуты выравниваться по вертикали с первым атрибутом в многострочном случае или нет. По умолчанию true.
-        ignores: [], // селектор для игнорирования узлов.
-      },
-    ],
-
     //Проверка регистра для стиля именования компонентов в шаблоне.
     "vue/component-name-in-template-casing": [
       "error",
-      "PascalCase", // (по умолчанию) — требует написание имен тегов в регистре паскаля. Еще есть значение "kebab-case".
+      "PascalCase", //  по умолчанию требует написание имен тегов в "kebab-case"
       {
         registeredComponentsOnly: true, // если true, проверяются только зарегистрированные компоненты, если false проверьте все. По умолчанию true.
         ignores: [], // имена элементов, которые следует игнорировать. Устанавливает разрешающее имя элемента. Например, пользовательские элементы или компоненты Vue со специальным именем. Вы можете установить регулярное выражение, написав его как "/^name/".
       },
     ],
 
-    //Проверка на определенный регистр для имени компонента.
-    // ! Подходит для Options Api
-    "vue/component-definition-name-casing": ["error", "PascalCase"],
-
-    // Проверка имени компонента — оно должно соответствовать имени файла, в котором он находится.
-    // ! Подходит для Options Api
-    "vue/match-component-file-name": [
+    "vue/prefer-separate-static-class": "error",
+    "vue/no-multiple-objects-in-class": "error",
+    "vue/no-useless-v-bind": [
       "error",
       {
-        extensions: ["vue"], // массив расширений файлов для проверки. По умолчанию установлено значение ["jsx"].
-        shouldMatchCase: true, // должно ли имя компонента также соответствовать регистру имени файла. По умолчанию установлено значение false.
+        ignoreIncludesComment: false,
+        ignoreStringEscape: false,
       },
     ],
-
+    "vue/v-on-handler-style": [
+      "error",
+      ["method", "inline"],
+      {
+        ignoreIncludesComment: false,
+      },
+    ],
+    "vue/match-component-import-name": "error",
+    "vue/define-props-declaration": ["error", "type-based"],
+    "vue/define-emits-declaration": ["error", "type-based"],
+    "vue/define-macros-order": [
+      "error",
+      {
+        order: ["defineProps", "defineEmits"],
+      },
+    ],
+    "vue/no-undef-components": [
+      "error",
+      {
+        ignorePatterns: [],
+      },
+    ],
+    "vue/no-useless-mustaches": [
+      "error",
+      {
+        ignoreIncludesComment: false,
+        ignoreStringEscape: true,
+      },
+    ],
+    "vue/block-lang": [
+      "error",
+      {
+        script: {
+          lang: "ts",
+        },
+        style: {
+          lang: "scss",
+        },
+      },
+    ],
+    "vue/component-api-style": [
+      "error",
+      ["script-setup"], // "script-setup", "composition", "composition-vue2", or "options"
+    ],
+    "vue/custom-event-name-casing": [
+      "error",
+      "kebab-case",
+      {
+        ignores: [],
+      },
+    ],
+    "vue/html-button-has-type": [
+      "error",
+      {
+        button: true,
+        submit: true,
+        reset: true,
+      },
+    ],
+    "vue/next-tick-style": ["error", "promise"],
+    "vue/no-ref-object-destructure": "warn",
+    "vue/no-static-inline-styles": "error",
+    "vue/no-v-text": "error",
+    "vue/v-for-delimiter-style": ["error", "in"],
+    // ! Ниже правила для Options Api
     // Порядок свойств в компонентах.
-    // ! Подходит для Options Api
     "vue/order-in-components": [
       "error",
       {
@@ -118,6 +167,16 @@ module.exports = {
           "renderError",
           "LIFECYCLE_HOOKS",
         ],
+      },
+    ],
+    //Проверка на определенный регистр для имени компонента.
+    "vue/component-definition-name-casing": ["error", "PascalCase"],
+    // Проверка имени компонента — оно должно соответствовать имени файла, в котором он находится.
+    "vue/match-component-file-name": [
+      "error",
+      {
+        extensions: ["vue"], // массив расширений файлов для проверки. По умолчанию установлено значение ["jsx"].
+        shouldMatchCase: true, // должно ли имя компонента также соответствовать регистру имени файла. По умолчанию установлено значение false.
       },
     ],
   },

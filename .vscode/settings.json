@@ -1,6 +1,11 @@
 {
   "stylelint.enable": true,
-  "stylelint.validate": ["vue", "scss", "sass", "css"],
+  "stylelint.validate": [
+    "vue",
+    "scss",
+    "sass",
+    "css"
+  ],
   "css.validate": false,
   "scss.validate": false,
   "editor.codeActionsOnSave": {

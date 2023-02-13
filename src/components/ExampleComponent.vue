@@ -1,14 +1,20 @@
 <template>
-  <div
-    class="example-class"
-    :style="{
-      '--header-height': foo,
-    }"
-  ></div>
+  <div class="example-class">
+    <div class="foo">Hello.</div>
+  </div>
+  <ul>
+    <div></div>
+  </ul>
 </template>
 
-<script setup lang="ts">
-const foo = "30px";
+<script lang="ts" setup>
+defineProps<{
+  example?: string;
+}>();
+
+defineEmits<{
+  example?: string;
+}>();
 </script>
 
 <style lang="scss" scoped>

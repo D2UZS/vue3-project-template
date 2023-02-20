@@ -10,53 +10,59 @@
         @toggle="toggleBtnClickHandler"
       />
 
-      <ul
-        class="the-component-showcase__component-list"
+      <TheComponentShowcaseComponentGroupList
+        class="the-component-showcase__component-group-list"
         :class="{
-          'the-component-showcase__component-list--open':
-            componentListIsOpen && layoutIsOpen,
+          'the-component-showcase__component-group-list--open':
+            componentListIsOpen,
         }"
-      >
-        <li
-          v-for="(component, i) in componentList"
-          :key="i"
-          class="the-component-showcase__component-item"
-        >
-          {{ component }}
-        </li>
-      </ul>
+        :component-group-list="componentGroupList"
+        @toggle-group="componentGroupListClickHandler"
+      />
     </div>
 
-    <div
+    <TheComponentShowcaseLayout
       class="the-component-showcase__layout"
       :class="{
         'the-component-showcase__layout--open': layoutIsOpen,
+        'the-component-showcase__layout--move': componentListIsOpen,
       }"
-    ></div>
+      :active-group-name="activeGroupName"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+
 import TheComponentShowcaseToggleBtn from "./TheComponentShowcaseToggleBtn.vue";
+import TheComponentShowcaseComponentGroupList from "./TheComponentShowcaseComponentGroupList.vue";
+import TheComponentShowcaseLayout from "./TheComponentShowcaseLayout.vue";
 
-const componentListIsOpen = ref(false);
+const placedUnderControl = ref(false);
 const layoutIsOpen = ref(false);
+const componentListIsOpen = computed(
+  () => placedUnderControl.value && layoutIsOpen.value,
+);
 
-const componentList = [
-  "компонент 1",
-  "компонент 2",
-  "компонент 3",
-  "компонент 4",
+const componentGroupList = [
+  { title: "Система цветов", name: "GroupColors" },
+  { title: "Типографика", name: "GroupTypography" },
+  { title: "Кнопки", name: "GroupBtns" },
+  { title: "Иконки", name: "GroupIcons" },
 ];
 
+const activeGroupName = ref("");
+
+const componentGroupListClickHandler = (activeGroup: string) => {
+  activeGroupName.value = activeGroup;
+};
+
 function componentListToggle() {
-  componentListIsOpen.value = !componentListIsOpen.value;
+  placedUnderControl.value = !placedUnderControl.value;
 }
 
 function toggleBtnClickHandler(isActive: boolean) {
-  console.log(isActive);
-
   layoutIsOpen.value = isActive;
 }
 </script>
@@ -64,15 +70,21 @@ function toggleBtnClickHandler(isActive: boolean) {
 <style lang="scss" scoped>
 .the-component-showcase {
   --animation-duration: 0.2s;
-  position: relative;
-
-  height: 100%;
+  --btn-width: 20px;
 
   &__control {
     height: 100%;
   }
 
-  &__component-list {
+  &__toggle-btn {
+    position: relative;
+    z-index: 2;
+
+    width: var(--btn-width);
+    height: 100%;
+  }
+
+  &__component-group-list {
     position: absolute;
     top: 0;
     right: 0;
@@ -80,51 +92,27 @@ function toggleBtnClickHandler(isActive: boolean) {
 
     width: 250px;
     height: 100%;
-    padding: 0;
-    padding: 20px;
-    margin: 0;
-
-    font-size: 16px;
-    line-height: 120%;
-
-    background-color: #fff;
-    box-shadow: 0 0 10px rgb(0 0 0 / 0.5);
-    list-style: none;
-
-    transition-duration: var(--animation-duration);
-    transform: translateX(0);
 
     &--open {
       transform: translateX(100%);
     }
   }
 
-  &__component-item {
-  }
-
   &__layout {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 100%;
 
-    width: 100vw;
+    width: calc(100vw - var(--btn-width));
     height: 100%;
-
-    background-color: red;
-
-    transition-duration: var(--animation-duration);
-    transform: translateX(-100%);
 
     &--open {
       transform: translateX(0);
     }
-  }
 
-  &__toggle-btn {
-    position: relative;
-    z-index: 2;
-
-    height: 100%;
+    &--move {
+      transform: translateX(250px);
+    }
   }
 }
 </style>

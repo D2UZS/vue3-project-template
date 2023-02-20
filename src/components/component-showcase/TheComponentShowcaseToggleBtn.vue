@@ -18,7 +18,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const emit = defineEmits(["toggle"]);
+const emit = defineEmits<{
+  (e: "toggle", isActive: boolean): void;
+}>();
 
 const isActive = ref(false);
 
@@ -30,13 +32,17 @@ const toggleActive = () => {
 
 <style scoped lang="scss">
 .the-component-showcase-toggle-btn {
-  padding-inline: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   color: #fff;
 
   background-color: #8ea7e9;
 
   transition-duration: var(--animation-duration);
+
+  cursor: pointer;
 
   @media (hover: hover) {
     &:hover {

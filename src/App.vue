@@ -7,8 +7,6 @@
 
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import "@/assets/base.scss";
-
 import TheComponentShowcase from "@/components/component-showcase/TheComponentShowcase.vue";
 </script>
 
@@ -16,12 +14,17 @@ import TheComponentShowcase from "@/components/component-showcase/TheComponentSh
 .app {
   position: relative;
 
+  width: 100vw;
   min-height: 100vh;
+
+  overflow-x: hidden;
 
   &__the-component-showcase {
     position: absolute;
     top: 0;
     left: 0;
+
+    height: 100vh;
   }
 }
 </style>

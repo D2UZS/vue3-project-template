@@ -1,0 +1,97 @@
+@use "./media-queries" as m-queries;
+
+@mixin text {
+  font-size: 18px;
+  line-height: 32px;
+
+  @include m-queries.md-max {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  @include m-queries.sm-max {
+    line-height: 24px;
+  }
+}
+
+@mixin text-small {
+  font-size: 16px;
+  line-height: 28px;
+
+  @include m-queries.md-max {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+@mixin h1 {
+  font-size: 64px;
+  line-height: 125%;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+
+  @include m-queries.md-max {
+    font-size: 44px;
+    line-height: 145%;
+    letter-spacing: -0.02em;
+  }
+
+  @include m-queries.sm-max {
+    font-size: 30px;
+    line-height: 133%;
+    letter-spacing: -0.04em;
+  }
+}
+
+@mixin h2 {
+  font-size: 48px;
+  line-height: 133%;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+
+  @include m-queries.md-max {
+    font-size: 32px;
+    line-height: 125%;
+  }
+
+  @include m-queries.sm-max {
+    font-size: 24px;
+    line-height: 133%;
+  }
+}
+
+@mixin h3 {
+  font-size: 32px;
+  line-height: 125%;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+
+  @include m-queries.md-max {
+    font-size: 24px;
+    line-height: 133%;
+  }
+
+  @include m-queries.sm-max {
+    font-size: 20px;
+    line-height: 140%;
+  }
+}
+
+@mixin h4 {
+  font-size: 24px;
+  line-height: 133%;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+
+  @include m-queries.md-max {
+    font-size: 20px;
+    line-height: 140%;
+  }
+
+  @include m-queries.sm-max {
+    font-size: 18px;
+    line-height: 156%;
+  }
+}

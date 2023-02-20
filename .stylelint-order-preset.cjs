@@ -1,9 +1,3 @@
-/**
- * @typedef {Object} Group
- * @property {Array<string>} properties
- */
-
-/** @type {Group[]} */
 const propertyGroups = [
   {
     /**
@@ -142,9 +136,10 @@ const propertyGroups = [
       "font",
       "font-family",
       "font-size",
+      "line-height",
+      "font-weight",
       "font-variation-settings",
       "font-style",
-      "font-weight",
       "font-feature-settings",
       "font-optical-sizing",
       "font-kerning",
@@ -165,7 +160,6 @@ const propertyGroups = [
       "-moz-osx-font-smoothing",
       "font-smooth",
       "hyphens",
-      "line-height",
       "text-align",
       "text-align-last",
       "text-emphasis",
@@ -351,7 +345,6 @@ const propertyGroups = [
     ],
   },
   {
-    // Accessibility & Interactions.
     properties: [
       "pointer-events",
       "-ms-touch-action",

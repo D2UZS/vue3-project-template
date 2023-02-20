@@ -21,12 +21,22 @@ module.exports = {
     "stylelint-config-prettier-scss",
   ],
   rules: {
+    "declaration-property-value-no-unknown": true,
+    "function-url-quotes": "always",
     "declaration-block-no-duplicate-custom-properties": true,
     "declaration-empty-line-before": null,
     "no-empty-source": null,
-    "selector-max-type": 0,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "selector-max-type": [
+      0,
+      {
+        ignore: ["custom-elements"],
+      },
+    ],
     "selector-max-class": 1,
     "alpha-value-notation": "number",
+    "shorthand-property-no-redundant-values": true,
     "selector-pseudo-class-disallowed-list": ["root"],
     "number-max-precision": 2,
     "declaration-no-important": true,
@@ -62,7 +72,12 @@ module.exports = {
       "transition",
       "animation",
     ],
-    "length-zero-no-unit": [true, { ignore: ["custom-properties"] }],
+    "length-zero-no-unit": [
+      true,
+      {
+        ignore: ["custom-properties"],
+      },
+    ],
     "order/order": ["custom-properties", "declarations"],
     "order/properties-order": propertyGroups.map((group) => ({
       ...group,

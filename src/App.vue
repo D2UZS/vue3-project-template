@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import TheComponentShowcase from "@/components/component-showcase/TheComponentShowcase.vue";
+import TheComponentShowcase from "@components/component-showcase/TheComponentShowcase.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -17,7 +17,10 @@ import TheComponentShowcase from "@/components/component-showcase/TheComponentSh
   width: 100vw;
   min-height: 100vh;
 
-  overflow-x: hidden;
+  color: var(--gray900);
+  font-family: HeliosC, Arial, Helvetica, sans-serif;
+
+  background-color: var(--gray100);
 
   &__the-component-showcase {
     position: absolute;

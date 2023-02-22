@@ -21,6 +21,7 @@ module.exports = {
     "stylelint-config-prettier-scss",
   ],
   rules: {
+    "function-no-unknown": null,
     "declaration-property-value-no-unknown": true,
     "function-url-quotes": "always",
     "declaration-block-no-duplicate-custom-properties": true,

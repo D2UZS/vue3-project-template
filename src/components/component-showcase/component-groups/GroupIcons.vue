@@ -1,7 +1,7 @@
 <template>
   <div class="group-icons">
     <GroupComponentTemplate>
-      <template #name>Иконки</template>
+      <template #name>VIcon</template>
 
       <template #description>Как использовать</template>
 
@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import GroupComponentTemplate from "./GroupComponentTemplate.vue";
-import VIcon from "@/components/VIcon.vue";
+import VIcon from "@components/VIcon.vue";
 
 const icons = ["like-hand", "like-hand", "like-hand"];
 </script>

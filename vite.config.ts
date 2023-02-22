@@ -22,18 +22,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": fileURLToPath(new URL("./src/", import.meta.url)),
       "@components": fileURLToPath(
-        new URL("./src/components", import.meta.url),
+        new URL("./src/components/", import.meta.url),
       ),
       "@assets": fileURLToPath(new URL("./src/assets/", import.meta.url)),
-      "@static": fileURLToPath(new URL("./src/static/images", import.meta.url)),
-      "@utils": fileURLToPath(new URL("./src/utils/index.js", import.meta.url)),
-      "@services": fileURLToPath(new URL("./src/services", import.meta.url)),
-      "@hooks": fileURLToPath(new URL("./src/hooks", import.meta.url)),
-      "@style/colors": fileURLToPath(
-        new URL("./src/assets/styles/colors.scss", import.meta.url),
-      ),
+      "@static": fileURLToPath(new URL("./src/static/", import.meta.url)),
+      "@utils": fileURLToPath(new URL("./src/utils/index.ts", import.meta.url)),
+      "@services": fileURLToPath(new URL("./src/services/", import.meta.url)),
+      "@hooks": fileURLToPath(new URL("./src/hooks/", import.meta.url)),
       "@style/mixins": fileURLToPath(
         new URL("./src/assets/styles/mixins/index.scss", import.meta.url),
       ),
@@ -45,6 +42,9 @@ export default defineConfig({
           "./src/assets/styles/utility-classes/index.scss",
           import.meta.url,
         ),
+      ),
+      "@style/variables": fileURLToPath(
+        new URL("./src/assets/styles/variables/index.scss", import.meta.url),
       ),
     },
   },

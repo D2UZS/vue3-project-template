@@ -1,5 +1,5 @@
 <template>
-  <div class="group-btns">GroupBtns</div>
+  <div class="group-btns"></div>
 </template>
 
 <script setup lang="ts"></script>

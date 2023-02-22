@@ -1,0 +1,16 @@
+@use "@style/mixins" as mixins;
+
+$fonts-extensions: "woff2",
+"woff";
+
+// **************************
+// *** HeliosC ***
+// **************************
+$inter-path: "./fonts";
+$inter: "HeliosC";
+
+@include mixins.font-face($inter, "#{$inter-path}/HeliosThinC", 100, normal, $fonts-extensions);
+@include mixins.font-face($inter, "#{$inter-path}/HeliosLightC", 300, normal, $fonts-extensions);
+@include mixins.font-face($inter, "#{$inter-path}/HeliosC", 400, normal, $fonts-extensions);
+@include mixins.font-face($inter, "#{$inter-path}/HeliosC-Bold", 700, normal, $fonts-extensions);
+@include mixins.font-face($inter, "#{$inter-path}/HeliosBlackC", 900, normal, $fonts-extensions);

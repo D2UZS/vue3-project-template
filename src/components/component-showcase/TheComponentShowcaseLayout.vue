@@ -44,7 +44,7 @@ const activeGroup = computed(() => listGroupСomponents[props.activeGroupName]);
   display: flex;
   justify-content: center;
 
-  background-color: #f2f5f8;
+  background-color: #fff;
 
   transition-duration: var(--animation-duration);
   transform: translateX(-100%);

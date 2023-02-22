@@ -1,0 +1,5 @@
+$rhythm: 4px;
+
+@function rhythm($pow) {
+  @return calc($rhythm * $pow);
+}

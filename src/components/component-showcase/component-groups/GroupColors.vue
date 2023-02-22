@@ -42,6 +42,7 @@
 
 <script setup lang="ts">
 import GroupComponentTemplate from "./GroupComponentTemplate.vue";
+import { copyTextToClipboard } from "@/utils";
 
 const colors = [
   {
@@ -56,15 +57,6 @@ const colors = [
 
 function getColorClassModifier(color: string, shades: number) {
   return `group-colors__item-button--${color}${shades}`;
-}
-
-async function copyTextToClipboard(text: string) {
-  try {
-    await navigator.clipboard.writeText(text);
-    console.log("Text copied to clipboard");
-  } catch (err) {
-    console.error("Error in copying text: ", err);
-  }
 }
 </script>
 

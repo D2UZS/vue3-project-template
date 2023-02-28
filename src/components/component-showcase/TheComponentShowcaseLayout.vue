@@ -51,7 +51,7 @@ const activeGroup = computed(() => listGroupСomponents[props.activeGroupName]);
 
   &__content {
     width: 100%;
-    padding: 20px;
+    padding-inline: 20px;
   }
 }
 

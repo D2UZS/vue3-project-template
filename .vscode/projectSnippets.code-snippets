@@ -1,5 +1,5 @@
 {
-  "Vue Single File Component Setup Composition API with Typescript and SCSS": {
+  "Шаблон компонента": {
     "prefix": "component-template",
     "body": [
       "<template>",
@@ -9,6 +9,42 @@
       "<script setup lang=\"ts\"></script>",
       "",
       "<style scoped lang=\"scss\"></style>"
+    ],
+    "description": ""
+  },
+  "Шаблон компонента группы витрины компонентов": {
+    "prefix": "the-component-showcase-group",
+    "body": [
+      "<TheComponentShowcaseGroup>",
+      "\t<template #name></template>",
+      "",
+      "\t<template #connection></template>",
+      "",
+      "\t<template #description></template>",
+      "",
+      "\t<template #props></template>",
+      "",
+      "\t<template #components></template>",
+      "</TheComponentShowcaseGroup>"
+    ],
+    "description": ""
+  },
+  "Шаблон для пропов компонента группы витрины компонентов": {
+    "prefix": "the-component-showcase-group-prop",
+    "body": [
+      "<TheComponentShowcaseGroupProp>",
+      "\t<template #name></template>",
+      "",
+      "\t<template #description></template>",
+      "",
+      "\t<template #required></template>",
+      "",
+      "\t<template #default></template>",
+      "",
+      "\t<template #type></template>",
+      "",
+      "\t<template #variants></template>",
+      "</TheComponentShowcaseGroupProp>"
     ],
     "description": ""
   }

@@ -5,18 +5,18 @@
 </template>
 
 <script setup lang="ts">
+import type { iconName } from "./IconTypes";
 import { computed } from "vue";
 
 interface Props {
-  iconName: string;
-  iconPath?: string;
+  iconName: iconName;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  iconPath: "/img/icons/sprites/user-icons.svg",
-});
+const props = defineProps<Props>();
 
-const iconPath = computed(() => `${props.iconPath}#${props.iconName}`);
+const iconPath = computed(
+  () => `/img/icons/sprites/user-icons.svg#${props.iconName}`,
+);
 </script>
 
 <style lang="scss" scoped>

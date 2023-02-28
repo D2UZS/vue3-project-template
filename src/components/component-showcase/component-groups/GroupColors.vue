@@ -1,15 +1,24 @@
 <template>
   <div class="group-colors">
-    <GroupComponentTemplate>
+    <TheComponentShowcaseGroup>
       <template #name>Система цветов</template>
-
-      <template #description>Как использовать</template>
 
       <template #connection
         >Не требуется. CSS-переменные цветов подключены глобально.</template
       >
 
+      <template #description>
+        Тут представлена система цветов, которые используются на проекте. Она
+        соотвествует системе цветов в макете. <br />
+        Все цвета должны задаваться ТОЛЬКО через эти CSS-переменные.
+        <br />
+        Пример: <code>color: var(--red900);</code>
+      </template>
+
+      <template #props></template>
+
       <template #components>
+        Нажми, что бы скопировать нужную переменную цвета.
         <div class="group-colors__components">
           <ul
             v-for="(color, i) in colors"
@@ -21,28 +30,29 @@
               :key="j"
               class="group-colors__item"
             >
-              <button
-                class="group-colors__item-button"
-                type="button"
-                :class="getColorClassModifier(color.colorName, shades)"
-                title="Скопировать в буфер обмена"
-                @click="
-                  copyTextToClipboard(`var(--${color.colorName}${shades})`)
-                "
+              <VCopy
+                :text-to-copy="`var(--${color.colorName}${shades})`"
+                title-text="Скопировать переменную цвета"
+                :hide-icon="true"
               >
-                {{ color.colorName }}{{ shades }}
-              </button>
+                <div
+                  class="group-colors__item-color"
+                  :class="`group-colors__item-color--${color.colorName}${shades}`"
+                >
+                  {{ color.colorName }}{{ shades }}
+                </div></VCopy
+              >
             </li>
           </ul>
         </div>
       </template>
-    </GroupComponentTemplate>
+    </TheComponentShowcaseGroup>
   </div>
 </template>
 
 <script setup lang="ts">
-import GroupComponentTemplate from "./GroupComponentTemplate.vue";
-import { copyTextToClipboard } from "@/utils";
+import TheComponentShowcaseGroup from "./TheComponentShowcaseGroup.vue";
+import VCopy from "../VCopy.vue";
 
 const colors = [
   {
@@ -54,10 +64,6 @@ const colors = [
     colorShades: [900, 700, 500, 300, 200, 100],
   },
 ];
-
-function getColorClassModifier(color: string, shades: number) {
-  return `group-colors__item-button--${color}${shades}`;
-}
 </script>
 
 <style scoped lang="scss">
@@ -75,7 +81,7 @@ function getColorClassModifier(color: string, shades: number) {
     list-style: none;
   }
 
-  &__item-button {
+  &__item-color {
     padding: 20px;
 
     color: #000;
@@ -89,7 +95,7 @@ function getColorClassModifier(color: string, shades: number) {
     // }
 
     &:active {
-      opacity: 0.9;
+      opacity: 0.8;
     }
 
     &--red {

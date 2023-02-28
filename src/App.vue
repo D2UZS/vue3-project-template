@@ -19,6 +19,9 @@ import TheComponentShowcase from "@components/component-showcase/TheComponentSho
 
   color: var(--gray900);
   font-family: HeliosC, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 
   background-color: var(--gray100);
 

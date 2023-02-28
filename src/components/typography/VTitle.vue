@@ -2,18 +2,18 @@
   <component
     :is="tag"
     class="v-title"
-    :class="typeClass"
+    :class="variation"
   >
     <slot></slot>
   </component>
 </template>
 
 <script setup lang="ts">
-import type { titleTags, typeOptions } from "./TypographyTypes";
+import type { titleTags, titleVariations } from "./TypographyTypes";
 
 interface Props {
   tag?: titleTags;
-  typeClass: typeOptions;
+  variation: titleVariations;
 }
 
 withDefaults(defineProps<Props>(), {

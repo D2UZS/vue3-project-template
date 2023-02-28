@@ -2,22 +2,21 @@
   <div class="the-component-showcase">
     <div
       class="the-component-showcase__control"
-      @mouseenter="componentListToggle"
-      @mouseleave="componentListToggle"
+      @mouseenter="controlToggle"
+      @mouseleave="controlToggle"
     >
       <TheComponentShowcaseToggleBtn
         class="the-component-showcase__toggle-btn"
         @toggle="toggleBtnClickHandler"
       />
 
-      <TheComponentShowcaseComponentGroupList
-        class="the-component-showcase__component-group-list"
+      <TheComponentShowcaseListGroups
+        class="the-component-showcase__list-groups"
         :class="{
-          'the-component-showcase__component-group-list--open':
-            componentListIsOpen,
+          'the-component-showcase__list-groups--open': componentListIsOpen,
         }"
-        :component-group-list="componentGroupList"
-        @toggle-group="componentGroupListClickHandler"
+        :list-groups="listGroups"
+        @toggle-group="listGroupsClickHandler"
       />
     </div>
 
@@ -36,7 +35,7 @@
 import { ref, computed } from "vue";
 
 import TheComponentShowcaseToggleBtn from "./TheComponentShowcaseToggleBtn.vue";
-import TheComponentShowcaseComponentGroupList from "./TheComponentShowcaseComponentGroupList.vue";
+import TheComponentShowcaseListGroups from "./TheComponentShowcaseListGroups.vue";
 import TheComponentShowcaseLayout from "./TheComponentShowcaseLayout.vue";
 
 const placedUnderControl = ref(false);
@@ -45,20 +44,21 @@ const componentListIsOpen = computed(
   () => placedUnderControl.value && layoutIsOpen.value,
 );
 
-const componentGroupList = [
+const listGroups = [
   { title: "Система цветов", name: "GroupColors" },
   { title: "Типографика", name: "GroupTypography" },
   { title: "Кнопки", name: "GroupBtns" },
   { title: "Иконки", name: "GroupIcons" },
+  { title: "Песочница", name: "GroupSandbox" },
 ];
 
 const activeGroupName = ref("");
 
-const componentGroupListClickHandler = (activeGroup: string) => {
+const listGroupsClickHandler = (activeGroup: string) => {
   activeGroupName.value = activeGroup;
 };
 
-function componentListToggle() {
+function controlToggle() {
   placedUnderControl.value = !placedUnderControl.value;
 }
 
@@ -84,7 +84,7 @@ function toggleBtnClickHandler(isActive: boolean) {
     height: 100%;
   }
 
-  &__component-group-list {
+  &__list-groups {
     position: absolute;
     top: 0;
     right: 0;

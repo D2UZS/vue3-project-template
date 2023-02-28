@@ -1,14 +1,14 @@
 <template>
-  <ul class="the-component-showcase-component-group-list">
+  <ul class="the-component-showcase-list-groups">
     <li
-      v-for="(component, i) in componentGroupList"
+      v-for="(component, i) in listGroups"
       :key="i"
-      class="the-component-showcase-component-group-list__item"
+      class="the-component-showcase-list-groups__item"
     >
       <button
-        class="the-component-showcase-component-group-list__item-btn"
+        class="the-component-showcase-list-groups__item-btn"
         :class="{
-          'the-component-showcase-component-group-list__item-btn--active':
+          'the-component-showcase-list-groups__item-btn--active':
             component.name === activeGroupName,
         }"
         type="button"
@@ -24,7 +24,7 @@
 import { ref } from "vue";
 
 interface Props {
-  componentGroupList: Array<{ title: string; name: string }>;
+  listGroups: Array<{ title: string; name: string }>;
 }
 
 defineProps<Props>();
@@ -42,7 +42,7 @@ const toggleActiveGroup = (groupName: string) => {
 </script>
 
 <style scoped lang="scss">
-.the-component-showcase-component-group-list {
+.the-component-showcase-list-groups {
   display: flex;
   flex-direction: column;
   gap: 8px;

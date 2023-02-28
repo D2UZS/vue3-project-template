@@ -18,6 +18,7 @@ import GroupColors from "./component-groups/GroupColors.vue";
 import GroupTypography from "./component-groups/GroupTypography.vue";
 import GroupBtns from "./component-groups/GroupBtns.vue";
 import GroupIcons from "./component-groups/GroupIcons.vue";
+import GroupSandbox from "./component-groups/GroupSandbox.vue";
 
 interface Props {
   activeGroupName: string;
@@ -34,6 +35,7 @@ const listGroupСomponents: PossibleComponents = {
   GroupTypography,
   GroupBtns,
   GroupIcons,
+  GroupSandbox,
 };
 
 const activeGroup = computed(() => listGroupСomponents[props.activeGroupName]);

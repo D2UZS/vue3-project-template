@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import TheComponentShowcaseGroup from "./TheComponentShowcaseGroup.vue";
+import TheComponentShowcaseGroup from "../TheComponentShowcaseGroup.vue";
 import VCopy from "../VCopy.vue";
 
 const colors = [

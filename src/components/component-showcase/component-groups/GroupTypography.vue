@@ -137,8 +137,8 @@
 </template>
 
 <script setup lang="ts">
-import TheComponentShowcaseGroup from "./TheComponentShowcaseGroup.vue";
-import TheComponentShowcaseGroupProp from "./TheComponentShowcaseGroupProp.vue";
+import TheComponentShowcaseGroup from "../TheComponentShowcaseGroup.vue";
+import TheComponentShowcaseGroupProp from "../TheComponentShowcaseGroupProp.vue";
 import type { IGroupInterface } from "./GroupInterface";
 import VCopy from "../VCopy.vue";
 

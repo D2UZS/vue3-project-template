@@ -47,6 +47,7 @@ const activeGroup = computed(() => listGroupСomponents[props.activeGroupName]);
   justify-content: center;
 
   background-color: #fff;
+  overflow: auto;
 
   transition-duration: var(--animation-duration);
   transform: translateX(-100%);

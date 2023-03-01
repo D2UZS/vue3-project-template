@@ -14,9 +14,7 @@
 
       "@style/mixins": ["./src/assets/styles/mixins/index.scss"],
       "@style/functions": ["./src/assets/styles/functions/index.scss"],
-      "@style/utility-classes": [
-        "./src/assets/styles/utility-classes/index.scss"
-      ],
+      "@style/utility-classes/*": ["./src/assets/styles/utility-classes/*"],
       "@style/variables": ["./src/assets/styles/variables/index.scss"]
     },
     "types": ["vite/client"]

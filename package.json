@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "node check-node-version && vite",
+    "dev": "node check-node-version && vite --host",
     "build": "node check-node-version && run-p type-check build-only",
     "preview": "node check-node-version && vite preview",
     "build-only": "node check-node-version && vite build",
@@ -11,6 +11,7 @@
     "lint": "node check-node-version && eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "maska": "^2.1.7",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

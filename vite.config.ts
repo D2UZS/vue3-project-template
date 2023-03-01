@@ -38,10 +38,7 @@ export default defineConfig({
         new URL("./src/assets/styles/functions/index.scss", import.meta.url),
       ),
       "@style/utility-classes": fileURLToPath(
-        new URL(
-          "./src/assets/styles/utility-classes/index.scss",
-          import.meta.url,
-        ),
+        new URL("./src/assets/styles/utility-classes/", import.meta.url),
       ),
       "@style/variables": fileURLToPath(
         new URL("./src/assets/styles/variables/index.scss", import.meta.url),
